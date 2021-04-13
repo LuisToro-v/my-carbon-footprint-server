@@ -46,7 +46,51 @@ const foodTimeFrame = async(req,res)=> {
     }
 }
 
+const deleteFood = async(req,res)=> {
+    let id = req.body.id;
+    let user_id = req.body.user_id;
+    if(!(Number.isInteger(id) && Number.isInteger(user_id))){
+        return res.status(400).json({
+            message: "Bad input",
+        });
+    }
+    try{
+        await db.any("DELETE FROM FOOD WHERE id = $1 AND user_id = $2",[id,user_id]);
+        return res.status(200).json({
+           message:"Entry Deleted"
+        });
+    }
+    catch(err){
+        res.status(500).send(err)
+    }
+}
+
+const updateFood =  async(req,res)=> {
+    let id = req.body.id;
+    let user_id = req.body.user_id;
+    let foodTotal = req.body.resultFoodTotal
+    if(!(Number.isInteger(id) && Number.isInteger(user_id) && Number.isInteger(foodTotal))){
+        return res.status(400).json({
+            message: "Bad input",
+        });
+    }
+    try{
+        await db.any("UPDATE food SET " + 
+                     "result_food_total = $1, " + 
+                      "time_input = CURRENT_TIMESTAMP " +
+                      "where id = $2 AND user_id = $3",[foodTotal,id,user_id]);
+        return res.status(200).json({
+           message:"Entry updated"
+        });
+    }
+    catch(err){
+        res.status(500).send(err)
+    }
+}
+
 module.exports = {
     logFoodTotal,
-    foodTimeFrame
+    foodTimeFrame,
+    deleteFood,
+    updateFood
 }
