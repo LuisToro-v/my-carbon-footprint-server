@@ -68,7 +68,7 @@ const deleteFood = async(req,res)=> {
 const updateFood =  async(req,res)=> {
     let id = req.body.id;
     let user_id = req.body.user_id;
-    let foodTotal = req.body.resultFoodTotal
+    let foodTotal = req.body.result_food_total
     if(!(Number.isInteger(id) && Number.isInteger(user_id) && Number.isInteger(foodTotal))){
         return res.status(400).json({
             message: "Bad input",
