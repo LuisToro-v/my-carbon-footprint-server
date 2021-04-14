@@ -4,6 +4,7 @@ const db = require('../db/db')
 const transportTotal = async(req,res)=> {
     let total = req.body.result_transport_total;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     if(!(Number.isInteger(total) && Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -25,6 +26,7 @@ const transportTimeFrame = async(req,res)=> {
     let start = req.body.start;
     let end = req.body.end;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     if(!(Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -49,6 +51,7 @@ const transportTimeFrame = async(req,res)=> {
 const deleteTransport = async(req,res)=> {
     let id = req.body.id;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     if(!(Number.isInteger(id) && Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -70,6 +73,7 @@ const deleteTransport = async(req,res)=> {
 const updateTransport =  async(req,res)=> {
     let id = req.body.id;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     let total = req.body.result_transport_total
     if(!(Number.isInteger(id) && Number.isInteger(user_id) && Number.isInteger(total))){
         return res.status(400).json({
