@@ -1,9 +1,11 @@
 require('dotenv').config();
 const db = require('../db/db')
+
 // Insert new Food record
 const logFoodTotal = async(req,res)=> {
     let foodTotal = req.body.result_food_total;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     if(!(Number.isInteger(foodTotal) && Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -25,6 +27,7 @@ const foodTimeFrame = async(req,res)=> {
     let start = req.body.start;
     let end = req.body.end;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     if(!(Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -46,16 +49,18 @@ const foodTimeFrame = async(req,res)=> {
     }
 }
 
+// Delete a food record
 const deleteFood = async(req,res)=> {
     let id = req.body.id;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     if(!(Number.isInteger(id) && Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
         });
     }
     try{
-        await db.any("DELETE FROM FOOD WHERE id = $1 AND user_id = $2",[id,user_id]);
+        await db.none("DELETE FROM FOOD WHERE id = $1 AND user_id = $2",[id,user_id]);
         return res.status(200).json({
            message:"Entry Deleted"
         });
@@ -65,9 +70,11 @@ const deleteFood = async(req,res)=> {
     }
 }
 
+//updates result_food_total and time_input of a food record;
 const updateFood =  async(req,res)=> {
     let id = req.body.id;
     let user_id = req.body.user_id;
+    // let user_id = res.user_id;
     let foodTotal = req.body.result_food_total
     if(!(Number.isInteger(id) && Number.isInteger(user_id) && Number.isInteger(foodTotal))){
         return res.status(400).json({
@@ -75,7 +82,7 @@ const updateFood =  async(req,res)=> {
         });
     }
     try{
-        await db.any("UPDATE food SET " + 
+        await db.none("UPDATE food SET " + 
                      "result_food_total = $1, " + 
                       "time_input = CURRENT_TIMESTAMP " +
                       "where id = $2 AND user_id = $3",[foodTotal,id,user_id]);
