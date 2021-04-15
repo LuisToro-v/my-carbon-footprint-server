@@ -6,7 +6,6 @@ const foodRouter = require('./routes/foodRoutes')
 
 const transportRouter = require('./routes/transportRoutes')
 
-const transportRouter = require('./routes/transportRoutes')
 
 
 const app = express();
