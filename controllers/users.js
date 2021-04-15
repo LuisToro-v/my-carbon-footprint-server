@@ -1,7 +1,7 @@
 require('dotenv').config();
 const db = require('../db/db')
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 
 const makeToken = (identity) => {
     const accToken = jwt.sign(identity, Buffer.from(process.env.TSK,'base64'),{

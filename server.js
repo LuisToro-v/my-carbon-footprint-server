@@ -1,5 +1,5 @@
 require('dotenv').config();
-const cors = require('cors')
+// const cors = require('cors')
 const express = require('express');
 const userRouter = require('./routes/userRoutes')
 const foodRouter = require('./routes/foodRoutes')
@@ -20,7 +20,7 @@ const corsOptions = {
         }
     },
 };
-app.use(cors())
+// app.use(cors())
 app.use(express.json());
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));

@@ -4,8 +4,8 @@ const db = require('../db/db')
 // Insert new Food record
 const logFoodTotal = async(req,res)=> {
     let foodTotal = req.body.result_food_total;
-    let user_id = req.body.user_id;
-    // let user_id = res.user_id;
+    // let user_id = req.body.user_id;
+    let user_id = res.user_id;
     if(!(Number.isInteger(foodTotal) && Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -26,8 +26,8 @@ const logFoodTotal = async(req,res)=> {
 const foodTimeFrame = async(req,res)=> {
     let start = req.body.start;
     let end = req.body.end;
-    let user_id = req.body.user_id;
-    // let user_id = res.user_id;
+    // let user_id = req.body.user_id;
+    let user_id = res.user_id;
     if(!(Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -52,8 +52,8 @@ const foodTimeFrame = async(req,res)=> {
 // Delete a food record
 const deleteFood = async(req,res)=> {
     let id = req.body.id;
-    let user_id = req.body.user_id;
-    // let user_id = res.user_id;
+    // let user_id = req.body.user_id;
+    let user_id = res.user_id;
     if(!(Number.isInteger(id) && Number.isInteger(user_id))){
         return res.status(400).json({
             message: "Bad input",
@@ -73,8 +73,8 @@ const deleteFood = async(req,res)=> {
 //updates result_food_total and time_input of a food record;
 const updateFood =  async(req,res)=> {
     let id = req.body.id;
-    let user_id = req.body.user_id;
-    // let user_id = res.user_id;
+    // let user_id = req.body.user_id;
+    let user_id = res.user_id;
     let foodTotal = req.body.result_food_total
     if(!(Number.isInteger(id) && Number.isInteger(user_id) && Number.isInteger(foodTotal))){
         return res.status(400).json({
