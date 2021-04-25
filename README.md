@@ -33,7 +33,13 @@ My Carbon Footprint is an online calulator that quantifies a person's carbon foo
 - knex 0.95.4.x
 - React 17.0.2.x
 - React-DOM 17.0.2.x
+- React-router 5.2.0x
 - React-XML-Parser 1.1.8.x
+- Material-ui 4.11.3x
+- Chart.js 2.9.4x
+- Mapbox-gl 2.2.0x
+- Mathjs 9.3.1x
+- Tableau-api 2.2.3x
 
 ## Development
 
@@ -72,5 +78,8 @@ This project adheres to the [Airbnb Style Guide](https://github.com/airbnb/javas
 
 ## Front-End Wireframe
 
-## App is deployed here: 
+![Screen Shot 2021-04-24 at 8 18 09 PM](https://user-images.githubusercontent.com/70560875/115976284-4fc61580-a53a-11eb-88ed-eb0ab3f19f17.png)
+
+
+## App is deployed here: https://admiring-davinci-6a9ca0.netlify.app/
 
